@@ -1,7 +1,7 @@
 .profiler-main {
   display: flex;
   flex-direction: column;
-  height: 95%;
+  max-height: 95%;
   overflow-y: scroll;
   background-color: hsl(198, 0%, 98%);
   margin-top: 0;

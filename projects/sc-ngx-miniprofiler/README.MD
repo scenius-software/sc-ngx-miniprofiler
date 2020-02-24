@@ -31,24 +31,3 @@ providers: [
 ],
 
 ```
-
-##### C#
-```c#
-public void ConfigureServices(IServiceCollection services)
-{
-    ...
-    services.AddMiniProfiler(options =>
-    {
-	    options.RouteBasePath = "/profiler";
-            options.SqlFormatter = new InlineFormatter();
-    }).AddEntityFramework();
-    ...
-}
-...
-public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-{
-    ...
-    app.UseBasePath("/api");
-    ...
-}
-```

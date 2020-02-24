@@ -30,10 +30,11 @@ export class ScNgxMiniProfilerComponent {
     _profilerService.idUpdated.subscribe(id => {
       this._profilerService.getDataForId(id).subscribe(profilerData => {
         // Delete anything older than 5 sec
-        let newData = this.profilerData.filter(x => new Date(x.Started).getTime() + (this.cacheSeconds * 600) >= (new Date()).getTime());
+        let newData = this.profilerData.filter(x => new Date(x.Started).getTime() + (this.cacheSeconds * 1000) >= (new Date()).getTime());
         newData = newData.concat(profilerData
           .slice(1))
-          .sort((x,y) => (new Date(x.Started).getTime() + new Date(y.Started).getTime()))
+          .sort((x,y) => (new Date(x.Started).getTime() - new Date(y.Started).getTime()))
+          .reverse()
           .map((x, i) => ({...x, ...{colour: this.palette[i % this.palette.length]}}));
         this.profilerData = newData;
         cd.detectChanges();
