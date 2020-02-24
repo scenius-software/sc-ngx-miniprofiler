@@ -17,7 +17,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "sc-ngx-miniprofiler": [
+        "dist/sc-ngx-miniprofiler/sc-ngx-miniprofiler",
+        "dist/sc-ngx-miniprofiler"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

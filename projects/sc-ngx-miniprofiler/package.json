@@ -1,0 +1,23 @@
+{
+  "name": "sc-ngx-miniprofiler",
+  "version": "0.0.1",
+  "description": "MiniProfiler component for Angular",
+  "author": "Scenius",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scenius-software/sc-ngx-miniprofiler.git"
+  },
+  "bugs": {
+    "url": "https://github.com/scenius-software/sc-ngx-miniprofiler/i/i/i/issuessss"
+  },
+  "keywords": [
+    "angular",
+    "miniprofiler"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^9.0.2",
+    "@angular/core": "^9.0.2",
+    "tslib": "^1.10.0"
+  }
+}

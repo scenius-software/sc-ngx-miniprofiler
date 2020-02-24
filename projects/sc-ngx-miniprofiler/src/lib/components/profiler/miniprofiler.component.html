@@ -1,0 +1,81 @@
+<ng-container>
+  <div class="profiler-main" *ngIf="profilerData">
+    <div class="">
+      API Profiler
+    </div>
+    <div class="">
+      <div *ngFor="let profilerData of profilerData">
+        <div>
+          <div [style.background-color]="profilerData.colour">&nbsp;</div>
+          <div>
+            <table>
+              <thead>
+              <tr>
+                <th class="align-left">
+                  ({{profilerData.Started | date:'short'}}) &nbsp; <strong>{{ profilerData.Name }}</strong>
+                </th>
+                <th>Duration (ms)</th>
+                <th>sql (ms)</th>
+              </tr>
+              </thead>
+              <tbody *ngIf="profilerData.Root.Children">
+              <ng-container *ngFor="let child of profilerData.Root.Children">
+                <tr>
+                  <td>
+                    {{child.Name}}
+                  </td>
+                  <td class="align-center">
+                    {{child.DurationMilliseconds}}
+                  </td>
+                  <td></td>
+                </tr>
+                <ng-container *ngIf="child.CustomTimings">
+                  <tr *ngFor="let timing of child.CustomTimings.sql">
+                    <td class="child-td">
+                      {{timing.ExecuteType}}
+                    </td>
+                    <td>
+                    </td>
+                    <td class="align-center">
+                      {{timing.DurationMilliseconds}}
+                    </td>
+                  </tr>
+                </ng-container>
+              </ng-container>
+              </tbody>
+            </table>
+            <div id="detail-view">
+              <table style="table-layout: fixed;">
+                <thead>
+                <tr>
+                  <td style="width: 250px"></td>
+                </tr>
+                </thead>
+                <ng-container *ngFor="let child of profilerData.Root.Children">
+                  <ng-container *ngIf="child.CustomTimings">
+
+                    <ng-container *ngFor="let timings of child.CustomTimings.sql">
+                      <tr>
+                        <td style="vertical-align: top">
+                          <strong>sql - {{timings.ExecuteType}}</strong><br>
+                          {{child.Name}}<br>
+                          {{timings.DurationMilliseconds}} (ms) (T+{{child.StartMilliseconds}} ms)
+                        </td>
+                        <td>
+                          <span *ngIf="timings.CommandString">{{timings.CommandString}}</span>
+                        </td>
+                      </tr>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+              </table>
+              <div class="separator" [style.background-color]="profilerData.colour">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

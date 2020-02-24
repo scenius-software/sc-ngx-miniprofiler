@@ -1,0 +1,49 @@
+.profiler-main {
+  display: flex;
+  flex-direction: column;
+  height: 95%;
+  overflow-y: scroll;
+  background-color: hsl(198, 0%, 98%);
+  margin-top: 0;
+  box-shadow: 0 .15rem 0 0 #dedede;
+  border-radius: .15rem;
+  border-width: .05rem;
+  border-style: solid;
+  border-color: #dedede;
+}
+
+table {
+  width: 100%;
+  font-size: 11px;
+}
+
+.child-td {
+  padding-left: 8px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 95%;
+  margin-top: 0;
+}
+
+.card-block {
+  overflow-y: auto;
+}
+
+.profile-block {
+  display: flex;
+}
+
+.separator {
+  height: 2px;
+}
+
+.profile-block-colour {
+  flex: 1;
+  width: 10px;
+  margin-right: 8px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
