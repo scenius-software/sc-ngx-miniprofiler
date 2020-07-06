@@ -5,5 +5,6 @@ export interface MiniProfilerResultChild {
     Name: string;
     DurationMilliseconds: number;
     StartMilliseconds: number;
-    CustomTimings: MiniProfilerCustomTiming;
+    CustomTimings?: MiniProfilerCustomTiming;
+    Children?: Array<MiniProfilerResultChild>;
 }

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ScNgxMiniProfilerService } from '../../services/sc-ngx-mini-profiler.service';
-import { MiniProfilerResult } from '../../data/mini-profiler-result';
+import { ProcessedMiniProfilerResult } from '../../data/mini-profiler-result';
 
 @Component({
   selector: 'sc-ngx-miniprofiler-profiler',
@@ -10,7 +10,7 @@ import { MiniProfilerResult } from '../../data/mini-profiler-result';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ScNgxMiniProfilerComponent {
-  profilerData: MiniProfilerResult[] = [];
+  profilerData: ProcessedMiniProfilerResult[] = [];
   /**
    * API calls from up to x amount of seconds ago will be displayed. Defaults to 5.
    */
@@ -37,7 +37,7 @@ export class ScNgxMiniProfilerComponent {
           .reverse()
           .map((x, i) => ({...x, ...{colour: this.palette[i % this.palette.length]}}));
         this.profilerData = newData;
-        cd.detectChanges();
+        cd.markForCheck();
       });
     });
   }

@@ -18,8 +18,8 @@
                 <th>sql (ms)</th>
               </tr>
               </thead>
-              <tbody *ngIf="profilerData.Root.Children">
-              <ng-container *ngFor="let child of profilerData.Root.Children">
+              <tbody *ngIf="profilerData.FlattenedChildren">
+              <ng-container *ngFor="let child of profilerData.FlattenedChildren">
                 <tr>
                   <td>
                     {{child.Name}}
@@ -51,12 +51,12 @@
                   <td style="width: 250px"></td>
                 </tr>
                 </thead>
-                <ng-container *ngFor="let child of profilerData.Root.Children">
+                <ng-container *ngFor="let child of profilerData.FlattenedChildren">
                   <ng-container *ngIf="child.CustomTimings">
 
                     <ng-container *ngFor="let timings of child.CustomTimings.sql">
                       <tr>
-                        <td style="vertical-align: top">
+                        <td style="vertical-align: top; overflow: hidden; text-overflow: ellipsis; padding-right: 6px;">
                           <strong>sql - {{timings.ExecuteType}}</strong><br>
                           {{child.Name}}<br>
                           {{timings.DurationMilliseconds}} (ms) (T+{{child.StartMilliseconds}} ms)
@@ -79,3 +79,4 @@
     </div>
   </div>
 </ng-container>
+
